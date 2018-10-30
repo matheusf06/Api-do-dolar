@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 
 export default class Api extends Component {
   constructor(props) {
@@ -13,15 +14,14 @@ export default class Api extends Component {
   }
 
   componentDidMount() {
-    fetch('https://economia.awesomeapi.com.br/USD/1')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        this.setState({ arrayDolar: responseJson })
-        this.setState({ dolar: this.state.arrayDolar[0].high })
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    Axios.get("https://economia.awesomeapi.com.br/USD/1")
+    .then(response => {
+      this.setState({arrayDolar: response.data});
+      this.setState({dolar: response.data[0].high});
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }
 
   calcular = () => {
@@ -33,8 +33,8 @@ export default class Api extends Component {
       <div class="box">
         <h2 class="center">Valor do dolar: </h2>
         {this.state.arrayDolar.map(valor =>
-          <p>R$ {valor.high}
-          </p>)}
+          <h3>R$ {valor.high}
+          </h3>)}
         <h4>Data/Hora da ultima cotação: </h4>
         {this.state.arrayDolar.map(valor =>
           <p>{valor.create_date}
@@ -57,4 +57,3 @@ export default class Api extends Component {
     );
   }
 }
-

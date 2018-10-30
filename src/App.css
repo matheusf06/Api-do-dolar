@@ -1,12 +1,6 @@
 body{
   background-image: url('./assets/money.jpg');
   background-size: 260px;
-}
-p {
-  font-family: Lato;
-  text-align: center;
-}
-h2, h4{
   font-family: Lato;
   text-align: center;
 }
@@ -29,7 +23,6 @@ h2, h4{
   text-align: center;
 }
 .button{
-  text-align: center;
   margin-top: 20px;
 }
 .button #button{
@@ -48,5 +41,5 @@ h2, h4{
   opacity: 1
 }
 #input{
-  max-width: 38px;
+  max-width: 42px;
 }
